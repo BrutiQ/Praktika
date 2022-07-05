@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block title %}Категоря товаров: {{ group }}{% endblock %}
+{% block content %}
+  <div class="container">
+    <h1>{{ group }}</h1>
+    <p>
+      {{ group.description|linebreaksbr }}
+    </p>
+    {% for post in page_obj %}
+      {% include 'posts/includes/post_layout.html' with group_flag=True %}
+      <hr>
+    {% endfor %}
+    {% include 'posts/includes/paginator.html' %}
+  </div>
+{% endblock %}
